@@ -1,0 +1,43 @@
+name: StarLevels
+version: '1.0.0'
+main: dev.starlevels.StarLevelsPlugin
+api-version: '1.21'
+description: Star level system with GUI management and a level-gated shop
+softdepend: [Vault]
+
+commands:
+  level:
+    description: View your level (or another player's)
+    usage: /level [player]
+    permission: starlevels.use
+  levels:
+    description: Open the levels GUI
+    permission: starlevels.view
+  sl:
+    description: StarLevels admin command
+    usage: /sl <set|add|remove|addxp|color|reset|reload|gui>
+    aliases: [starlevels]
+    permission: starlevels.admin
+  shop:
+    description: Open the level shop
+    permission: starlevels.shop
+  shopadmin:
+    description: Manage the level shop
+    usage: /shopadmin <edit|add|remove|setprice|setlevel|list>
+    permission: starlevels.shop.admin
+  coins:
+    description: Check your balance
+    aliases: [bal]
+    permission: starlevels.use
+
+permissions:
+  starlevels.use:
+    default: true
+  starlevels.view:
+    default: true
+  starlevels.shop:
+    default: true
+  starlevels.admin:
+    default: op
+  starlevels.shop.admin:
+    default: op

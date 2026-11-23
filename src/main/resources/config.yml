@@ -1,0 +1,114 @@
+# ============================================================
+#  StarLevels configuration
+# ============================================================
+
+leveling:
+  max-level: 100
+  # XP needed to go from level L to L+1  =  base-xp * L ^ exponent
+  # Higher exponent = levels get harder faster.
+  # L1->2 = 100, L10->11 ~ 3,162, L25->26 ~ 12,500, L50->51 ~ 35,355
+  base-xp: 100
+  exponent: 1.5
+
+xp:
+  multiplier: 1.0          # global XP multiplier (use for events)
+  actionbar: true          # show "+5 XP" popups
+  player-kill: 0
+  fishing: 10
+  playtime:
+    enabled: true
+    interval-seconds: 60
+    xp: 5
+  # XP per block broken. Anything not listed gives blocks-default.
+  blocks-default: 0
+  blocks:
+    STONE: 0.5
+    DEEPSLATE: 0.5
+    COAL_ORE: 3
+    DEEPSLATE_COAL_ORE: 4
+    COPPER_ORE: 3
+    DEEPSLATE_COPPER_ORE: 4
+    IRON_ORE: 5
+    DEEPSLATE_IRON_ORE: 6
+    GOLD_ORE: 8
+    DEEPSLATE_GOLD_ORE: 10
+    NETHER_GOLD_ORE: 4
+    REDSTONE_ORE: 5
+    DEEPSLATE_REDSTONE_ORE: 6
+    LAPIS_ORE: 6
+    DEEPSLATE_LAPIS_ORE: 8
+    DIAMOND_ORE: 25
+    DEEPSLATE_DIAMOND_ORE: 30
+    EMERALD_ORE: 20
+    DEEPSLATE_EMERALD_ORE: 25
+    NETHER_QUARTZ_ORE: 4
+    ANCIENT_DEBRIS: 50
+    OAK_LOG: 1
+    SPRUCE_LOG: 1
+    BIRCH_LOG: 1
+    JUNGLE_LOG: 1
+    ACACIA_LOG: 1
+    DARK_OAK_LOG: 1
+    CHERRY_LOG: 1
+    MANGROVE_LOG: 1
+  # XP per mob kill. Hostile mobs not listed use mobs-default; passive mobs give 0 unless listed.
+  mobs-default: 5
+  mobs:
+    ZOMBIE: 6
+    SKELETON: 6
+    CREEPER: 8
+    SPIDER: 5
+    ENDERMAN: 15
+    WITCH: 15
+    BLAZE: 12
+    WITHER_SKELETON: 20
+    PIGLIN_BRUTE: 25
+    GHAST: 20
+    ELDER_GUARDIAN: 150
+    WARDEN: 400
+    WITHER: 600
+    ENDER_DRAGON: 1000
+    COW: 0
+    PIG: 0
+
+display:
+  enabled: true
+  star: "★"
+  nametag: true     # badge in front of the name above the head and in the tab list
+  chat: true        # badge in chat
+  # Star color by level. The highest entry <= the player's level is used.
+  # Names (gold, aqua...) or hex (#ff55ff). Admins can override per player.
+  tiers:
+    1: gray
+    10: green
+    20: aqua
+    30: blue
+    40: light_purple
+    50: gold
+    75: red
+    100: "#FF55FF"
+
+effects:
+  level-up:
+    enabled: true
+    sound: entity.player.levelup      # any vanilla sound key
+    particle: totem_of_undying        # any vanilla particle key (not dust)
+    particle-count: 60
+    firework: true                    # harmless star firework in the star color
+    title: true
+    broadcast-every: 10               # broadcast every N levels (0 = off)
+
+rewards:
+  money-per-level: 50                 # reward = this * new level (Vault money or built-in coins)
+  # Console commands run on reaching a level. %player% and %level% are replaced.
+  commands:
+    10:
+      - "give %player% diamond 3"
+    25:
+      - "give %player% netherite_ingot 1"
+
+economy:
+  provider: AUTO                      # AUTO = Vault if installed, else built-in. BUILTIN forces built-in coins.
+  symbol: "$"                         # used by the built-in currency
+  built-in:
+    coins-per-xp: 0.5                 # built-in coins earned per XP point gained
